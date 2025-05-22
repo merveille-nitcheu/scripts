@@ -59,5 +59,3 @@ To add a new script:
 This repository is maintained by the **DevOps Playground volunteer team** and is open to contributions from all members.
 
 Let’s automate smartly! 🚀
-
-```
