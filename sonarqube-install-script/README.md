@@ -25,11 +25,7 @@ They deploy SonarQube along with PostgreSQL, Java, and the necessary system conf
 
 ### Navigate to the sonarqube folder
 
-```cd sonarqube-install-script```
-
-### Make the script executable
-
-```chmod +x install_sonarqube_ubuntu.sh install_sonarqube_centos.sh```
+```cd scripts/sonarqube-install-script```
 
 ### Create the file environment
 
@@ -38,6 +34,10 @@ They deploy SonarQube along with PostgreSQL, Java, and the necessary system conf
 ### Modify and save it if necessary
 
 ```nano sonarqube.env``` and ```source sonarqube.env```
+
+### Make the script executable
+
+```chmod +x install_sonarqube_ubuntu.sh install_sonarqube_centos.sh```
 
 ### Run the script according to your OS
 
