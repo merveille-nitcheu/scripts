@@ -7,7 +7,8 @@ set -e
 source ./sonarqube.env || { echo "configuration file not found"; exit 1; }
 
 echo "Installing Java and dependencies"
-sudo dnf install -y java-17-openjdk wget unzip zip gnupg curl policycoreutils-python-utils lsb-release
+sudo dnf update -y
+sudo dnf install -y java-17-openjdk wget unzip zip gnupg curl policycoreutils-python-utils
 echo "Java and dependencies installed"
 
 # Set vm.max_map_count
