@@ -8,8 +8,9 @@ source ./sonarqube.env || { echo "configuration file not found"; exit 1; }
 
 echo "Installing java and dependencies"
 sudo apt update -y
-sudo apt install -y openjdk-11-jdk wget unzip zip gnupg
+sudo apt install -y openjdk-17-jdk wget unzip zip gnupg
 echo "java and dependencies installed"
+
 
 # Set vm.max_map_count
 echo "vm.max_map_count=262144" | sudo tee -a /etc/sysctl.conf
@@ -18,8 +19,6 @@ sudo sysctl -p
 
 echo "Installing postgresql"
 
-wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 sudo apt update -y
 sudo apt install -y postgresql postgresql-contrib
 sudo systemctl enable postgresql
@@ -54,7 +53,7 @@ echo "Configuring sonarqube"
 sudo tee /opt/sonarqube/conf/sonar.properties > /dev/null <<EOF
 sonar.jdbc.username=${SONARQUBE_DB_USER}
 sonar.jdbc.password=${SONARQUBE_DB_PASSWORD}
-sonar.jdbc.url=jdbc:postgresql://localhost:localhost/${SONARQUBE_DB_NAME}
+sonar.jdbc.url=jdbc:postgresql://localhost/${SONARQUBE_DB_NAME}
 sonar.web.host=0.0.0.0
 sonar.web.port=${SONARQUBE_HTTP_PORT}
 EOF

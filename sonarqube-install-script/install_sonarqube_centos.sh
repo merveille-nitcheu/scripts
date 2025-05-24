@@ -7,7 +7,7 @@ set -e
 source ./sonarqube.env || { echo "configuration file not found"; exit 1; }
 
 echo "Installing Java and dependencies"
-sudo dnf install -y java-11-openjdk wget unzip zip gnupg curl policycoreutils-python-utils lsb-release
+sudo dnf install -y java-17-openjdk wget unzip zip gnupg curl policycoreutils-python-utils lsb-release
 echo "Java and dependencies installed"
 
 # Set vm.max_map_count
@@ -51,7 +51,7 @@ echo "Configuring SonarQube"
 sudo tee /opt/sonarqube/conf/sonar.properties > /dev/null <<EOF
 sonar.jdbc.username=${SONARQUBE_DB_USER}
 sonar.jdbc.password=${SONARQUBE_DB_PASSWORD}
-sonar.jdbc.url=jdbc:postgresql://localhost:5432/${SONARQUBE_DB_NAME}
+sonar.jdbc.url=jdbc:postgresql://localhost/${SONARQUBE_DB_NAME}
 sonar.web.host=0.0.0.0
 sonar.web.port=${SONARQUBE_HTTP_PORT}
 EOF
@@ -83,5 +83,5 @@ sudo systemctl daemon-reexec
 sudo systemctl daemon-reload
 sudo systemctl enable --now sonarqube
 
-echo "✅ Installation terminée avec succès !"
+echo "✅ Installation successfully completed !"
 echo "🌐 Accès : http://<votre-ip>:${SONARQUBE_HTTP_PORT}"
