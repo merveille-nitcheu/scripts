@@ -4,6 +4,11 @@
 set -e
 
 # Load configuration file
+if [ ! -f ./sonarqube.env ]; then
+    cp sonarqube.env.example sonarqube.env
+    exit 1
+fi
+
 source ./sonarqube.env || { echo "configuration file not found"; exit 1; }
 
 echo "Installing Java and dependencies"
@@ -84,5 +89,8 @@ sudo systemctl daemon-reexec
 sudo systemctl daemon-reload
 sudo systemctl enable --now sonarqube
 
-echo "✅ Installation successfully completed !"
-echo "🌐 Accès : http://<votre-ip>:${SONARQUBE_HTTP_PORT}"
+echo "Get the public IP address"
+SERVER_IP=$(curl -s http://ipinfo.io/ip 2>/dev/null || echo "IP_NOT_DETECTED")
+
+echo "✅ Installation completed successfully!"
+echo "🌐 You can access SonarQube at: http://${SERVER_IP}:${SONARQUBE_HTTP_PORT}"
