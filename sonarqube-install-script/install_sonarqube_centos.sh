@@ -6,7 +6,6 @@ set -e
 # Load configuration file
 if [ ! -f ./sonarqube.env ]; then
     cp sonarqube.env.example sonarqube.env
-    exit 1
 fi
 
 source ./sonarqube.env || { echo "configuration file not found"; exit 1; }
