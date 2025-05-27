@@ -17,6 +17,14 @@ They deploy SonarQube along with PostgreSQL, Java, and the necessary system conf
 
 - Port 9000 must be open to access the SonarQube web interface
 
+- Minimum 2 GB RAM (recommended: 4 GB RAM)
+
+- Minimum 2 CPU cores
+
+- At least 10 GB of free disk space for SonarQube and its dependencies
+
+- Stable Internet connection to download dependencies and SonarQube binaries
+
 ## Usage
 
 ### Clone the CI/CD repository
@@ -37,7 +45,13 @@ They deploy SonarQube along with PostgreSQL, Java, and the necessary system conf
 
 ### Make the script executable
 
-```chmod +x install_sonarqube_ubuntu.sh install_sonarqube_centos.sh```
+- On Ubuntu/Debian:
+
+```chmod +x install_sonarqube_ubuntu.sh```
+
+- On CentOS/RedHat:
+
+```chmod +x install_sonarqube_centos.sh```
 
 ### Run the script according to your OS
 
@@ -61,7 +75,11 @@ They deploy SonarQube along with PostgreSQL, Java, and the necessary system conf
 
 ### Access
 
-Access SonarQube via: http://<your_server_ip>:${SONARQUBE_HTTP_PORT}
+To find your server's public IP address, run:
+
+```curl -s http://ipinfo.io/ip```
+
+Access SonarQube via: http://<your_server_ip>:9000
 
 ### Default login credentials
 
