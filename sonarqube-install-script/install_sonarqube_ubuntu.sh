@@ -7,7 +7,6 @@ set -e
 
 if [ ! -f ./sonarqube.env ]; then
     cp sonarqube.env.example sonarqube.env
-    exit 1
 fi
 
 source ./sonarqube.env 
