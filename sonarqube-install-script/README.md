@@ -75,7 +75,11 @@ They deploy SonarQube along with PostgreSQL, Java, and the necessary system conf
 
 ### Access
 
-Access SonarQube via: http://<your_server_ip>:${SONARQUBE_HTTP_PORT}
+To find your server's public IP address, run:
+
+```curl -s http://ipinfo.io/ip```
+
+Access SonarQube via: http://<your_server_ip>:9000
 
 ### Default login credentials
 
