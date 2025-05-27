@@ -94,7 +94,7 @@ sudo systemctl enable sonarqube
 sudo systemctl start sonarqube
 
 echo "Get the public IP address"
-SERVER_IP=$(curl -s http://ipinfo.io/ip || echo "IP_NOT_DETECTED")
+SERVER_IP=$(curl -s http://ipinfo.io/ip 2>/dev/null || echo "IP_NOT_DETECTED")
 
 echo "✅ Installation completed successfully!"
 echo "🌐 You can access SonarQube at: http://${SERVER_IP}:${SONARQUBE_HTTP_PORT}"
