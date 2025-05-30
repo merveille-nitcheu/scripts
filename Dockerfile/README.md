@@ -18,17 +18,17 @@ This project contains two independently containerized applications:
 
 ### Navigate to the Dockerfile folder
 
-```cd scripts/Dockefile```
+```cd scripts/Dockerfile```
 
 ### 🟢 Node.js App
 
-1. Navigate into the `nodejs_app` directory
+1. Navigate into the `nodejs_app` directory:
 ```cd nodejs_app```
 
-2. Build the Docker image
+2. Build the Docker image:
 ```docker build -t nodejs_app .```
 
-3. Run the container
+3. Run the container:
 ```docker run -p 3000:3000 nodejs_app```
 
 🔗 Access the app at: [http://your_server_ip:3000](http://your_server_ip:3000)
@@ -37,13 +37,13 @@ This project contains two independently containerized applications:
 
 ### 🐍 Flask App
 
-1. Navigate into the `flask_app` directory
+1. Navigate into the `flask_app` directory:
 ```cd flask_app```
 
-2. Build the Docker image
+2. Build the Docker image:
 ```docker build -t flask-app .```
 
-3. Run the container
+3. Run the container:
 ```docker run -p 5000:5000 flask-app```
 
 🔗 Access the app at: [http://your_server_ip:5000](http://your_server_ip:5000)
