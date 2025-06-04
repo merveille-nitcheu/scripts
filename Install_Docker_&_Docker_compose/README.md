@@ -22,7 +22,7 @@ This script installs the latest version of **Docker Engine** and **Docker Compos
 
 1. **Download the script** ```git clone https://github.com/DevOps-Playground-CM/scripts.git```
    
-2. Navigate to the sonarqube folder ```cd scripts/Install Docker & Docker compose```
+2. Navigate to the sonarqube folder ```cd scripts/Install_Docker_&_Docker_compose```
    
 3. Make it executable ```chmod +x install_docker.sh```
    
