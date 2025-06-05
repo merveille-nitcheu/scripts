@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx-proxy
@@ -9,11 +10,11 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - nginx_certs:/etc/nginx/certs:ro
+      - nginx_vhost:/etc/nginx/vhost.d
+      - nginx_html:/usr/share/nginx/html
+      - nginx_conf:/etc/nginx/conf.d
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./certs:/etc/nginx/certs:ro
-      - ./vhost.d:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
-      - ./conf.d:/etc/nginx/conf.d
     networks:
       - nginx_proxy
 
@@ -25,14 +26,23 @@ services:
       - nginx-proxy
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
+      - DEFAULT_EMAIL=merveillenitcheu12@gmail.com
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./certs:/etc/nginx/certs
-      - ./vhost.d:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
+      - nginx_certs:/etc/nginx/certs
+      - nginx_vhost:/etc/nginx/vhost.d
+      - nginx_html:/usr/share/nginx/html
+      - acme:/etc/acme.sh
     networks:
       - nginx_proxy
 
 networks:
   nginx_proxy:
     external: true
+
+volumes:
+  nginx_certs:
+  nginx_vhost:
+  nginx_html:
+  nginx_conf:
+  acme:
